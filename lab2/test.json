@@ -1,0 +1,33 @@
+{
+    "shape": [
+        {
+            "a": 3,
+            "b": 4,
+            "c": 5,
+            "name": "Triangle"
+        },
+        {
+            "_r": 5,
+            "name": "Circle"
+        },
+        {
+            "a": 4,
+            "b": 5,
+            "name": "Rectangle"
+        },
+        {
+            "a": 5,
+            "name": "Square"
+        },
+        {
+            "_r": 3,
+            "name": "Circle"
+        },
+        {
+            "a": 3,
+            "b": 3,
+            "c": 3,
+            "name": "Triangle"
+        }
+    ]
+}
