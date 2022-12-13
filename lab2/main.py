@@ -15,7 +15,7 @@ class Shape:
     @abstractmethod
     def __repr__(self):
         pass
-
+    
 
 class Square(Shape):
     def __init__(self, a):
@@ -29,6 +29,9 @@ class Square(Shape):
 
     def __repr__(self):
         return f"You have {type(self).__name__}"
+
+    def __dict__(self):
+        return {"class_name": type(self).__name__, 'a': self.a}
 
 
 class Rectangle(Shape):
@@ -44,6 +47,9 @@ class Rectangle(Shape):
 
     def __repr__(self):
         return f"You have {type(self).__name__}"
+
+    def __dict__(self):
+        return {"class_name": type(self).__name__, 'a': self.a, 'b': self.b}
 
 
 class Triangle(Shape):
@@ -62,6 +68,9 @@ class Triangle(Shape):
     def __repr__(self):
         return f"You have {type(self).__name__}"
 
+    def __dict__(self):
+        return {"class_name": type(self).__name__, 'a': self.a, 'b': self.b, 'c': self.c}
+
 
 class Circle(Shape):
     def __init__(self, r):
@@ -75,6 +84,9 @@ class Circle(Shape):
 
     def __repr__(self):
         return f"You have {type(self).__name__}"
+
+    def __dict__(self):
+        return {"class_name": type(self).__name__, '_r': self._r}
 
 
 def write(data, filename):
@@ -92,7 +104,8 @@ shapes = {
 }
 
 for obj in shapesArray:
-    shapes['shape'].append(obj.__dict__)
+    shapes['shape'].append(obj.__dict__())
+
 
 write(shapes, 'test.json')
 
@@ -102,13 +115,13 @@ shapes['shape'].clear()
 shapes = read_json('test.json')
 
 for obj in shapes['shape']:
-    if type(obj).__name__ == "Triangle":
+    if obj["class_name"] == "Triangle":
         shapesArray.append(Triangle(obj['a'], obj['b'], obj['c']))
-    elif type(obj).__name__ == "Circle":
+    elif obj["class_name"] == "Circle":
         shapesArray.append(Circle(obj['_r']))
-    elif type(obj).__name__ == "Rectangle":
+    elif obj["class_name"] == "Rectangle":
         shapesArray.append(Rectangle(obj['a'], obj['b']))
-    elif type(obj).__name__ == "Square":
+    elif obj["class_name"] == "Square":
         shapesArray.append(Square(obj['a']))
 
 for obj in shapesArray:
