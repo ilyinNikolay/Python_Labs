@@ -15,7 +15,7 @@ class Shape:
     @abstractmethod
     def __repr__(self):
         pass
-    
+
 
 class Square(Shape):
     def __init__(self, a):
@@ -28,7 +28,7 @@ class Square(Shape):
         return self.a * 4
 
     def __repr__(self):
-        return f"You have {type(self).__name__}"
+        return f"Square({self.a})"
 
     def __dict__(self):
         return {"class_name": type(self).__name__, 'a': self.a}
@@ -46,7 +46,7 @@ class Rectangle(Shape):
         return (self.a + self.b) * 2
 
     def __repr__(self):
-        return f"You have {type(self).__name__}"
+        return f"Rectangle{self.a}, {self.b})"
 
     def __dict__(self):
         return {"class_name": type(self).__name__, 'a': self.a, 'b': self.b}
@@ -66,7 +66,7 @@ class Triangle(Shape):
         return self.a + self.b + self.c
 
     def __repr__(self):
-        return f"You have {type(self).__name__}"
+        return f"Triangle({self.a}, {self.b}, {self.c})"
 
     def __dict__(self):
         return {"class_name": type(self).__name__, 'a': self.a, 'b': self.b, 'c': self.c}
@@ -83,7 +83,7 @@ class Circle(Shape):
         return 2 * pi * self._r
 
     def __repr__(self):
-        return f"You have {type(self).__name__}"
+        return f"Circle({self._r})"
 
     def __dict__(self):
         return {"class_name": type(self).__name__, '_r': self._r}
